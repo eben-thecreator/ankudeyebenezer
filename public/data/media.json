@@ -1,0 +1,10 @@
+[
+  {
+    "id": "media-001",
+    "slug": "media-project",
+    "title": "Media Project",
+    "description": "Photography and media production work.",
+    "image": "/images/media/media-project.jpg",
+    "category": "Photography"
+  }
+]

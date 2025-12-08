@@ -1,0 +1,10 @@
+[
+  {
+    "id": "geo-001",
+    "slug": "mapping-project",
+    "title": "Mapping Project",
+    "description": "Geospatial analysis and mapping work.",
+    "image": "/images/geospatial/mapping-project.jpg",
+    "category": "Survey"
+  }
+]
