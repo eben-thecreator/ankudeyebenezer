@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
-export default function MediaProjectPage() {
+export default function VisualProjectPage() {
   const params = useParams();
   const slug = params.slug as string;
   const [project, setProject] = useState<any>(null);
@@ -16,7 +16,7 @@ export default function MediaProjectPage() {
     const fetchProjects = async () => {
       try {
         const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-        const res = await fetch(`${baseUrl}/data/media.json`, { cache: 'no-store' });
+        const res = await fetch(`${baseUrl}/data/visual.json`, { cache: 'no-store' });
         const data = await res.json();
         setAllProjects(data || []);
 
@@ -45,8 +45,8 @@ export default function MediaProjectPage() {
       <main className="w-full min-h-screen bg-white flex flex-col items-center justify-center px-6">
         <h1 className="text-4xl font-extrabold text-gray-900 mb-4">Project Not Found</h1>
         <p className="text-gray-600 mb-6">The project you're looking for doesn't exist.</p>
-        <Link href="/media" className="text-black font-semibold hover:underline">
-          Back to Media & Entertainment
+        <Link href="/visual" className="text-black font-semibold hover:underline">
+          Back to Visual & Graphic Design
         </Link>
       </main>
     );
@@ -58,20 +58,20 @@ export default function MediaProjectPage() {
   const nextProject = currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
 
   return (
-    <main className="w-full bg-white">
-      {/* Hero Section - Cinematic for media */}
+    <main className="w-full">
+      {/* Hero Section - Same as Media Page */}
       <section className="relative w-full h-screen overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0">
           <Image
-            src={project.image || '/images/services/media.jpg'}
+            src={project.image || '/images/services/visual.jpg'}
             alt={project.title}
             fill
             className="object-cover"
             priority
           />
-          {/* Gradient overlay - darker for cinematic feel */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+          {/* Gradient overlay for cinematic depth */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
         </div>
 
         {/* Hero Content */}
@@ -79,7 +79,7 @@ export default function MediaProjectPage() {
           <h1 className="max-w-5xl text-white text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
             {project.title}
           </h1>
-          <p className="mt-4 text-gray-200 text-base sm:text-lg font-light max-w-3xl line-clamp-2">
+          <p className="mt-4 text-white text-base sm:text-lg font-light max-w-3xl line-clamp-1">
             {project.description}
           </p>
         </div>
@@ -88,9 +88,9 @@ export default function MediaProjectPage() {
       {/* Project Details Section */}
       <section className="w-full py-20 px-6 sm:px-12">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Left Side - Images and Videos - Takes 2 columns */}
-            <div className="space-y-4 lg:col-span-2">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* Left Side - Images and Videos */}
+            <div className="space-y-8">
               {/* Main Project Image */}
               <div className="relative w-full aspect-video overflow-hidden bg-gray-200">
                 {project.image && (
@@ -106,17 +106,21 @@ export default function MediaProjectPage() {
 
               {/* Videos Section */}
               {project.videos && project.videos.length > 0 && (
-                <div className="space-y-6">
+                <div className="space-y-4">
+                  <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-widest">Videos</h3>
                   {project.videos.map((video: any, idx: number) => (
-                    <div key={idx} className="space-y-3">
+                    <div key={idx} className="space-y-2">
                       <div className="relative w-full aspect-video overflow-hidden bg-black">
                         <iframe
                           src={video.url}
-                          title={video.title || `Video ${idx + 1}`}
+                          title={video.title}
                           className="w-full h-full"
                           allowFullScreen
                         />
                       </div>
+                      {video.title && (
+                        <p className="text-sm text-gray-700 font-medium">{video.title}</p>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -125,6 +129,7 @@ export default function MediaProjectPage() {
               {/* Gallery - Pictures Section */}
               {project.gallery && project.gallery.length > 0 && (
                 <div className="space-y-4">
+                  <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-widest">Gallery</h3>
                   <div className="grid grid-cols-1 gap-4">
                     {project.gallery.map((img: string, idx: number) => (
                       <div key={idx} className="relative w-full aspect-video overflow-hidden bg-gray-200">
@@ -151,63 +156,82 @@ export default function MediaProjectPage() {
                   <h2 className="text-3xl font-bold text-gray-900">{project.title}</h2>
                 </div>
 
-                {/* Project Type */}
+                {/* Project Type - Below Title */}
                 {project.type && (
-                  <div>
-                    <h3 className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wider">Project Type</h3>
-                    <p className="text-gray-900 text-sm font-bold">{project.type}</p>
-                  </div>
-                )}
-
-                {/* Year */}
-                {project.year && (
-                  <div>
-                    <h3 className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wider">Year</h3>
-                    <p className="text-gray-900 text-sm font-bold">{project.year}</p>
+                  <div className="-mt-6">
+                    <p className="text-gray-700 text-sm">{project.type}</p>
                   </div>
                 )}
 
                 {/* Three Column Row: Client | Role | Team Members */}
-                <div className="grid grid-cols-3 gap-8">
+                <div className="grid grid-cols-3 gap-12">
                   {project.client && (
                     <div>
-                      <h3 className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wider">Client</h3>
+                      <h3 className="text-xs font-semibold text-gray-600 mb-2">Client</h3>
                       <p className="text-gray-900 text-sm font-bold">{project.client}</p>
                     </div>
                   )}
 
+                  {project.role && (
+                    <div>
+                      <h3 className="text-xs font-semibold text-gray-600 mb-2">Role</h3>
+                      <p className="text-gray-900 text-sm font-bold">{project.role}</p>
+                    </div>
+                  )}
+
+                  {project.team && project.team.length > 0 && (
+                    <div>
+                      <h3 className="text-xs font-semibold text-gray-600 mb-2">Team</h3>
+                      <div className="space-y-1">
+                        {project.team.map((member: string, idx: number) => (
+                          <p key={idx} className="text-gray-900 text-sm font-bold">{member}</p>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Three Column Row: Category | Year | Tags */}
+                <div className="grid grid-cols-3 gap-12">
                   {project.category && (
                     <div>
-                      <h3 className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wider">Category</h3>
+                      <h3 className="text-xs font-semibold text-gray-600 mb-2">Category</h3>
                       <p className="text-gray-900 text-sm font-bold">{project.category}</p>
+                    </div>
+                  )}
+
+                  {project.year && (
+                    <div>
+                      <h3 className="text-xs font-semibold text-gray-600 mb-2">Year</h3>
+                      <p className="text-gray-900 text-sm font-bold">{project.year}</p>
+                    </div>
+                  )}
+
+                  {project.tags && project.tags.length > 0 && (
+                    <div>
+                      <h3 className="text-xs font-semibold text-gray-600 mb-2">Tags</h3>
+                      <p className="text-gray-900 text-sm font-bold">{project.tags.join(', ')}</p>
                     </div>
                   )}
                 </div>
 
                 {/* Overview Text */}
                 <div>
-                  <h3 className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wider">Overview</h3>
+                  <h3 className="text-xs font-semibold text-gray-600 mb-2">Overview</h3>
                   <p className="text-black font-bold leading-relaxed text-sm">
                     {project.description}
                   </p>
                 </div>
 
-                {/* Role and Tags - Below Overview */}
-                <div className="grid grid-cols-2 gap-8">
-                  {project.role && (
-                    <div>
-                      <h3 className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wider">Role</h3>
-                      <p className="text-gray-900 text-sm font-bold">{project.role}</p>
-                    </div>
-                  )}
-
-                  {project.tags && project.tags.length > 0 && (
-                    <div>
-                      <h3 className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wider">Tags</h3>
-                      <p className="text-gray-900 text-sm font-bold">{project.tags.join(', ')}</p>
-                    </div>
-                  )}
-                </div>
+                {/* Scope - If Available */}
+                {project.scope && (
+                  <div>
+                    <h3 className="text-xs font-semibold text-gray-600 mb-2">Scope</h3>
+                    <p className="text-gray-700 font-medium leading-relaxed text-sm">
+                      {project.scope}
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -220,7 +244,7 @@ export default function MediaProjectPage() {
           <div className="grid grid-cols-2 gap-8">
             {/* Previous Project */}
             {prevProject ? (
-              <Link href={`/media/${prevProject.slug}`} className="group">
+              <Link href={`/visual/${prevProject.slug}`} className="group">
                 <article className="space-y-4">
                   <div className="relative w-full aspect-video overflow-hidden bg-gray-200">
                     {prevProject.image && (
@@ -250,7 +274,7 @@ export default function MediaProjectPage() {
 
             {/* Next Project */}
             {nextProject ? (
-              <Link href={`/media/${nextProject.slug}`} className="group text-right">
+              <Link href={`/visual/${nextProject.slug}`} className="group text-right">
                 <article className="space-y-4">
                   <div className="relative w-full aspect-video overflow-hidden bg-gray-200">
                     {nextProject.image && (
@@ -284,8 +308,8 @@ export default function MediaProjectPage() {
       {/* Back to Projects Link */}
       <section className="w-full py-16 px-6 sm:px-12 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <Link href="/media" className="inline-flex items-center gap-2 text-black font-semibold hover:underline">
-            ← Back to Media & Entertainment
+          <Link href="/visual" className="inline-flex items-center gap-2 text-black font-semibold hover:underline">
+            ← Back to Visual & Graphic Design
           </Link>
         </div>
       </section>

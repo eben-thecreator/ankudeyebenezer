@@ -44,25 +44,16 @@ export default function Home() {
       {
         id: 'architecture',
         href: '/architecture',
-        title: 'ARCHITECTURE',
+        title: 'ARCHITECTURE & SPATIAL ENGINEERING',
         projects: 24,
         image: '/images/services/architecture.jpg',
         description:
           'Masterplanning, residential and commercial architectural design focused on craft and context-driven outcomes.',
       },
       {
-        id: 'geospatial',
-        href: '/geospatial',
-        title: 'GEOSPATIAL ENGINEERING',
-        projects: 18,
-        image: '/images/services/geospatial.jpg',
-        description:
-          'Spatial data modelling, GIS analysis, and mapping for precise decision-making and infrastructure planning.',
-      },
-      {
-        id: 'product',
-        href: '/product',
-        title: 'PRODUCT & BRAND',
+        id: 'visual',
+        href: '/visual',
+        title: 'BRAND & VISUAL DESIGN',
         projects: 31,
         image: '/images/services/digital.jpg',
         description:
@@ -119,34 +110,11 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-            {/* Arrow */}
-            <div className="absolute right-6 bottom-6 z-20 transition-transform duration-500 group-hover:rotate-12">
-              <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white backdrop-blur-sm group-hover:bg-white/20 transition">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5 12h14M13 5l7 7-7 7"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </div>
           </article>
         </Link>
     ))}
   </div>
 </section>
-
-<section>dont forget to implement the store section..     products  or crafts or whatever
-   </section> </main>
+ </main>
   );
 }

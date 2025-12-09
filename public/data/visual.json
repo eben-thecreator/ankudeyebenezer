@@ -1,0 +1,167 @@
+[
+  {
+    "id": "visual-001",
+    "slug": "brand-identity-system",
+    "title": "Brand Identity System",
+    "description": "A comprehensive visual system for a creative agency. Exploring cohesive design principles across multiple touchpoints.",
+    "image": "/images/works/visual/brand-identity.jpg",
+    "gallery": [
+      "/images/works/visual/brand-01.jpg",
+      "/images/works/visual/brand-02.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Brand System Showcase",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbnail": "/images/works/visual/brand-video.jpg"
+      }
+    ],
+    "category": "Branding",
+    "type": "Graphic Design",
+    "year": 2025,
+    "location": "Design Studio",
+    "client": "Creative Agency",
+    "role": "Brand Designer",
+    "team": ["Ankudey Ebenezer", "Design Director"],
+    "scope": "Logo design, color palette, typography system, brand guidelines",
+    "tags": ["Branding", "Design", "Visual Identity", "Systems"]
+  },
+  {
+    "id": "visual-002",
+    "slug": "typography-exploration",
+    "title": "Typography Exploration",
+    "description": "Deep dive into typographic hierarchy and expression. Showcasing the power of typography in visual communication.",
+    "image": "/images/works/visual/typography.jpg",
+    "gallery": [
+      "/images/works/visual/typography-01.jpg",
+      "/images/works/visual/typography-02.jpg",
+      "/images/works/visual/typography-03.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Typography Breakdown",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbnail": "/images/works/visual/typography-video.jpg"
+      }
+    ],
+    "category": "Typography",
+    "type": "Graphic Design",
+    "year": 2024,
+    "location": "Studio",
+    "client": "Design Magazine",
+    "role": "Type Designer",
+    "team": ["Ankudey Ebenezer", "Typographer"],
+    "scope": "Font research, specimen design, layout and composition",
+    "tags": ["Typography", "Design", "Visual Communication"]
+  },
+  {
+    "id": "visual-003",
+    "slug": "poster-campaign",
+    "title": "Poster Campaign",
+    "description": "Bold and striking poster designs for a cultural event. Exploring visual impact through composition and color.",
+    "image": "/images/works/visual/poster.jpg",
+    "gallery": [
+      "/images/works/visual/poster-01.jpg",
+      "/images/works/visual/poster-02.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Campaign Presentation",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbnail": "/images/works/visual/poster-video.jpg"
+      }
+    ],
+    "category": "Print Design",
+    "type": "Graphic Design",
+    "year": 2024,
+    "location": "Studio",
+    "client": "Cultural Institute",
+    "role": "Lead Designer",
+    "team": ["Ankudey Ebenezer", "Art Director"],
+    "scope": "Concept development, design direction, print specifications",
+    "tags": ["Poster", "Print", "Campaign", "Design"]
+  },
+  {
+    "id": "visual-004",
+    "slug": "packaging-design",
+    "title": "Packaging Design",
+    "description": "Premium product packaging that tells a story. Combining functionality with aesthetic appeal.",
+    "image": "/images/works/visual/packaging.jpg",
+    "gallery": [
+      "/images/works/visual/packaging-01.jpg",
+      "/images/works/visual/packaging-02.jpg",
+      "/images/works/visual/packaging-03.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Packaging Mockup",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbnail": "/images/works/visual/packaging-video.jpg"
+      }
+    ],
+    "category": "Product Design",
+    "type": "Packaging & Graphic Design",
+    "year": 2024,
+    "location": "Design Studio",
+    "client": "Lifestyle Brand",
+    "role": "Packaging Designer",
+    "team": ["Ankudey Ebenezer", "Product Designer"],
+    "scope": "Package structure, graphic design, material selection, production files",
+    "tags": ["Packaging", "Product", "Design", "Branding"]
+  },
+  {
+    "id": "visual-005",
+    "slug": "editorial-design",
+    "title": "Editorial Design",
+    "description": "Contemporary editorial layouts for print and digital. Balancing readability with visual storytelling.",
+    "image": "/images/works/visual/editorial.jpg",
+    "gallery": [
+      "/images/works/visual/editorial-01.jpg",
+      "/images/works/visual/editorial-02.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Editorial Showcase",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbnail": "/images/works/visual/editorial-video.jpg"
+      }
+    ],
+    "category": "Editorial",
+    "type": "Graphic Design",
+    "year": 2024,
+    "location": "Studio",
+    "client": "Publishing House",
+    "role": "Design Director",
+    "team": ["Ankudey Ebenezer", "Layout Designer"],
+    "scope": "Grid system development, layout design, typography direction",
+    "tags": ["Editorial", "Layout", "Print", "Design"]
+  },
+  {
+    "id": "visual-006",
+    "slug": "icon-system-design",
+    "title": "Icon System Design",
+    "description": "Comprehensive icon set for digital products. Creating visual consistency through systematic design.",
+    "image": "/images/works/visual/icons.jpg",
+    "gallery": [
+      "/images/works/visual/icons-01.jpg",
+      "/images/works/visual/icons-02.jpg",
+      "/images/works/visual/icons-03.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Icon System Overview",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbnail": "/images/works/visual/icons-video.jpg"
+      }
+    ],
+    "category": "UI Design",
+    "type": "Graphic Design",
+    "year": 2023,
+    "location": "Design Studio",
+    "client": "Tech Company",
+    "role": "Icon Designer",
+    "team": ["Ankudey Ebenezer", "Product Designer"],
+    "scope": "Icon creation, style guide development, usage documentation",
+    "tags": ["Icons", "UI", "Design Systems", "Visual Design"]
+  }
+]

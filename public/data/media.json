@@ -1,10 +1,167 @@
 [
   {
     "id": "media-001",
-    "slug": "media-project",
-    "title": "Media Project",
-    "description": "Photography and media production work.",
-    "image": "/images/media/media-project.jpg",
-    "category": "Photography"
+    "slug": "color-trends-2025",
+    "title": "Color Trends 2025",
+    "description": "Exploring the vibrant color palette defining contemporary visual culture. A dynamic exploration of hues shaping modern design and creative expression.",
+    "image": "/images/works/media2.jpg",
+    "gallery": [
+      "/images/works/media1.jpg",
+      "/images/works/media1.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Color Trends Teaser",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbnail": "/images/works/media/color-trends-video.jpg"
+      }
+    ],
+    "category": "Instagram",
+    "type": "Video Production",
+    "year": 2025,
+    "location": "Production Studio",
+    "client": "Design Studio",
+    "role": "Creative Director",
+    "team": ["Ankudey Ebenezer", "Motion Designer"],
+    "scope": "Conceptualization, color research, video production and final delivery",
+    "tags": ["Color", "Design", "Trends", "Video"]
+  },
+  {
+    "id": "media-002",
+    "slug": "minimalism-isnt-boring",
+    "title": "Minimalism Isn't Boring",
+    "description": "The art of saying more with less. Documentary exploring minimalist design principles and their impact on visual communication.",
+    "image": "/images/works/media3.jpg",
+    "gallery": [
+      "/images/works/media/minimalism-01.jpg",
+      "/images/works/media/minimalism-02.jpg",
+      "/images/works/media/minimalism-03.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Minimalism Documentary",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbnail": "/images/works/media/minimalism-video.jpg"
+      }
+    ],
+    "category": "Documentary",
+    "type": "Video & Photography",
+    "year": 2024,
+    "location": "Global",
+    "client": "Design Magazine",
+    "role": "Producer & Cinematographer",
+    "team": ["Ankudey Ebenezer", "Editor", "Cinematographer"],
+    "scope": "Research, filming, editing and post-production",
+    "tags": ["Minimalism", "Documentary", "Design"]
+  },
+  {
+    "id": "media-003",
+    "slug": "from-chaos-to-clarity",
+    "title": "From Chaos to Clarity",
+    "description": "The role of grid systems in design. Visual exploration of how structured systems bring order to complex information.",
+    "image": "/images/works/media5.jpg",
+    "gallery": [
+      "/images/works/media/chaos-01.jpg",
+      "/images/works/media/chaos-02.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Grid Systems Breakdown",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbnail": "/images/works/media/chaos-video.jpg"
+      }
+    ],
+    "category": "Educational",
+    "type": "Animation & Video",
+    "year": 2024,
+    "location": "Studio",
+    "client": "Design Institute",
+    "role": "Creative Director",
+    "team": ["Ankudey Ebenezer", "Animator", "Editor"],
+    "scope": "Concept development, animation, sound design and delivery",
+    "tags": ["Grid", "Systems", "Design", "Education"]
+  },
+  {
+    "id": "media-004",
+    "slug": "behind-the-studio-doors",
+    "title": "Behind the Studio Doors",
+    "description": "Our design process from brief to final. An intimate look at how we approach creative problem solving.",
+    "image": "/images/works/media4.jpg",
+    "gallery": [
+      "/images/works/media/studio-01.jpg",
+      "/images/works/media/studio-02.jpg",
+      "/images/works/media/studio-03.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Studio Walkthrough",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbnail": "/images/works/media/studio-video.jpg"
+      }
+    ],
+    "category": "Behind-the-Scenes",
+    "type": "Documentary",
+    "year": 2024,
+    "location": "Studio",
+    "client": "Self",
+    "role": "Director & Producer",
+    "team": ["Ankudey Ebenezer", "Cinematographer"],
+    "scope": "Filming, interviewing, editing and final delivery",
+    "tags": ["Process", "Studio", "Behind-the-scenes"]
+  },
+  {
+    "id": "media-005",
+    "slug": "visual-identity-power",
+    "title": "The Power of Visual Identity",
+    "description": "Why good branding matters more than ever. Exploring the impact of visual systems on brand perception.",
+    "image": "/images/works/media/visual-identity.jpg",
+    "gallery": [
+      "/images/works/media/identity-01.jpg",
+      "/images/works/media/identity-02.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Branding Essentials",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbnail": "/images/works/media/identity-video.jpg"
+      }
+    ],
+    "category": "Branding",
+    "type": "Educational Video",
+    "year": 2024,
+    "location": "Studio",
+    "client": "Creative Academy",
+    "role": "Content Creator",
+    "team": ["Ankudey Ebenezer"],
+    "scope": "Script writing, filming, animation and editing",
+    "tags": ["Branding", "Identity", "Visual Systems"]
+  },
+  {
+    "id": "media-006",
+    "slug": "storytelling-across-platforms",
+    "title": "Storytelling Across Platforms",
+    "description": "Adapting narratives for different media. How to tell compelling stories whether on film, web, or print.",
+    "image": "/images/works/media/storytelling.jpg",
+    "gallery": [
+      "/images/works/media/story-01.jpg",
+      "/images/works/media/story-02.jpg",
+      "/images/works/media/story-03.jpg"
+    ],
+    "videos": [
+      {
+        "title": "Multi-Platform Storytelling",
+        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbnail": "/images/works/media/story-video.jpg"
+      }
+    ],
+    "category": "Content",
+    "type": "Mixed Media",
+    "year": 2023,
+    "location": "Global",
+    "client": "Media Collective",
+    "role": "Storyteller",
+    "team": ["Ankudey Ebenezer", "Cinematographer", "Editor"],
+    "scope": "Narrative development, multi-format production, distribution strategy",
+    "tags": ["Storytelling", "Content", "Multi-media"]
   }
 ]

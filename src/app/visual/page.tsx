@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect } from 'react';
 
-export default function MediaPage() {
+export default function VisualPage() {
   const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -14,7 +14,7 @@ export default function MediaPage() {
     const fetchProjects = async () => {
       try {
         const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-        const res = await fetch(`${baseUrl}/data/media.json`, { cache: 'no-store' });
+        const res = await fetch(`${baseUrl}/data/visual.json`, { cache: 'no-store' });
         const data = await res.json();
         setProjects(data || []);
       } catch (error) {
@@ -45,8 +45,8 @@ export default function MediaPage() {
         {/* Background image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/services/media.jpg"
-            alt="Media & Entertainment Showreel"
+            src="/images/services/visual.jpg"
+            alt="Visual Design & Graphic Design"
             fill
             className="object-cover"
             priority
@@ -58,10 +58,10 @@ export default function MediaPage() {
         {/* Hero Content */}
         <div className="absolute bottom-0 left-0 z-10 w-full px-6 sm:px-12 pb-10 sm:pb-16">
           <h1 className="max-w-5xl text-white text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
-            MEDIA & ENTERTAINMENT
+            VISUAL & GRAPHIC DESIGN
           </h1>
           <p className="mt-4 text-white text-base sm:text-lg font-light max-w-3xl">
-            Creative direction, production and experiential media for compelling storytelling across platforms and formats.
+            Bold design systems, compelling visual identities and sophisticated graphic design for print and digital media.
           </p>
         </div>
       </section>
@@ -69,7 +69,7 @@ export default function MediaPage() {
       {/* Portfolio Section with Filter */}
       <section className="w-full py-20 px-6 sm:px-12">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row gap-2 lg:gap-12">
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
             {/* Left Sidebar - Filter (Sticky) */}
             <aside className="w-full lg:w-32 lg:flex-shrink-0">
               <div className="sticky top-24">
@@ -105,20 +105,47 @@ export default function MediaPage() {
               </div>
             </aside>
 
-            {/* Right Side - Portfolio Grid */}
+            {/* Right Side - Masonry Portfolio Grid */}
             <div className="flex-1">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {filteredProjects.map((p: any, idx: number) => {
-                  // All items have equal size - 3 columns, 1 row each
-                  const gridColSpan = 'sm:col-span-1';
-                  const aspectRatio = '16 / 9'; // Landscape ratio for all items
+                  let gridColSpan = 'sm:col-span-1';
+                  let aspectRatio = '1 / 1'; // Default square
+
+                  // Create a pattern: portrait, landscape, square, square, portrait, landscape, etc.
+                  const pattern = idx % 6;
+                  if (pattern === 0) {
+                    // Portrait
+                    gridColSpan = 'sm:col-span-1';
+                    aspectRatio = '3 / 4';
+                  } else if (pattern === 1) {
+                    // Landscape wide
+                    gridColSpan = 'sm:col-span-2';
+                    aspectRatio = '16 / 9';
+                  } else if (pattern === 2) {
+                    // Square
+                    gridColSpan = 'sm:col-span-1';
+                    aspectRatio = '1 / 1';
+                  } else if (pattern === 3) {
+                    // Square
+                    gridColSpan = 'sm:col-span-1';
+                    aspectRatio = '1 / 1';
+                  } else if (pattern === 4) {
+                    // Portrait tall
+                    gridColSpan = 'sm:col-span-1';
+                    aspectRatio = '2 / 3';
+                  } else {
+                    // Landscape
+                    gridColSpan = 'sm:col-span-2';
+                    aspectRatio = '16 / 9';
+                  }
 
                   return (
-                    <Link key={p.id} href={`/media/${p.slug}`}>
+                    <Link key={p.id} href={`/visual/${p.slug}`}>
                       <article className={`group cursor-pointer ${gridColSpan}`}>
                         {/* Image Container */}
                         <div
-                          className="relative w-full overflow-hidden bg-gray-200"
+                          className="relative w-full overflow-hidden mb-4 bg-gray-200"
                           style={{ aspectRatio }}
                         >
                           {p.image ? (
@@ -126,7 +153,7 @@ export default function MediaPage() {
                               src={p.image}
                               alt={p.title}
                               fill
-                              className="object-cover transition-transform duration-700"
+                              className="object-cover transition-transform duration-700 group-hover:scale-105"
                               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                             />
                           ) : (
@@ -136,17 +163,28 @@ export default function MediaPage() {
                           )}
                         </div>
 
-                        {/* Text Below Image */}
-                        <div className="flex items-center justify-between gap-2 py-3">
+                        {/* Text Content Below Image */}
+                        <div className="space-y-2">
                           {/* Title */}
-                          <h2 className="text-sm font-semibold line-clamp-1">
+                          <h2 className="text-sm font-semibold text-gray-900 group-hover:text-black transition-colors line-clamp-2">
                             {p.title}
                           </h2>
 
-                          {/* Category */}
-                          <p className="text-xs text-gray-600 flex-shrink-0">
-                            {p.category || 'Project'}
-                          </p>
+                          {/* Description - Show for landscape items */}
+                          {(pattern === 1 || pattern === 5) && p.description && (
+                            <p className="text-xs text-gray-600 line-clamp-2">{p.description}</p>
+                          )}
+
+                          {/* Category and Year Row */}
+                          <div className="flex items-center justify-between text-xs">
+                            {/* Category on Left */}
+                            <p className="text-gray-600">
+                              {p.category || 'Project'}
+                            </p>
+
+                            {/* Year on Right */}
+                            <p className="text-gray-600">{p.year || 'N/A'}</p>
+                          </div>
                         </div>
                       </article>
                     </Link>
@@ -167,3 +205,4 @@ export default function MediaPage() {
     </main>
   );
 }
+    
