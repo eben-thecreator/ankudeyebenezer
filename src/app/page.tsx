@@ -24,13 +24,13 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
         </div>
 
-        <div className="absolute bottom-0 left-0 z-10 w-full px-6 sm:px-12 pb-10 sm:pb-16">
-          <h1 className="max-w-5xl text-white text-4xl sm:text-6xl md:text-4xl font-extrabold  leading-tight">
+        <div className="absolute bottom-0 left-0 z-10 w-full px-4 sm:px-12 pb-8 sm:pb-16">
+          <h1 className="max-w-5xl text-white text-2xl sm:text-6xl md:text-4xl font-extrabold leading-tight">
             WORKING ACROSS<br />
             DESIGN, TECHNOLOGY AND <br />
             ENGINEERING.
           </h1>
-          <p className="mt-4 text-white text-base sm:text-lg font-light">Everything else grows from there</p>
+          <p className="mt-3 sm:mt-4 text-white text-xs sm:text-lg font-light">Everything else grows from there</p>
         </div>
       </section>
 
@@ -38,8 +38,8 @@ export default function Home() {
       {
         /* service data inline so no extra files or slug routes */
       }
-      <section className="w-full py-8 sm:py-12">
-  <div className="max-w-7xl mx-auto space-y-8">
+      <section className="w-full py-6 sm:py-12">
+  <div className="max-w-7xl mx-auto space-y-4 sm:space-y-8 px-4 sm:px-0">
     {[
       {
         id: 'architecture',
@@ -73,7 +73,7 @@ export default function Home() {
         key={s.id}
         href={s.href}
         className="group relative w-full overflow-hidden rounded-sm shadow-sm block"
-        style={{ height: '72vh' }}
+        style={{ height: '60vh' }}
       >
         <article className="w-full h-full">
           {/* Background image */}
@@ -88,29 +88,27 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/50 transition duration-500 group-hover:bg-black/60" />
           </div>
 
-          {/* Original layout but with micro-animations */}
-          <div className="relative z-10 h-full flex items-center">
-            <div className="w-full px-6 sm:px-12 grid grid-cols-12 items-center">
+          {/* Mobile: Stacked vertical layout | Desktop: Grid layout */}
+          <div className="relative z-10 h-full flex flex-col sm:grid sm:grid-cols-12 sm:items-center justify-between p-4 sm:p-0 sm:px-12">
 
-              {/* LEFT SIDE (title + count) */}
-              <div className="col-span-4 text-left text-white flex flex-col justify-center space-y-1">
-              <h3 className="text-2xl sm:text-3xl font-extrabold transform transition-all duration-500 group-hover:-translate-y-1">
+            {/* TOP/LEFT SECTION (title + count) */}
+            <div className="sm:col-span-4 text-left text-white flex flex-col justify-start sm:justify-center space-y-2 sm:space-y-1 pt-4 sm:pt-0">
+              <h3 className="text-lg sm:text-3xl font-extrabold leading-snug sm:leading-normal transform transition-all duration-500 group-hover:-translate-y-1">
                 {s.title}
               </h3>
-              <div className="text-sm tracking-widest opacity-80 transition-all duration-500 group-hover:opacity-100">
-                {s.projects}
+              <div className="text-xs sm:text-sm tracking-widest opacity-70 sm:opacity-80 transition-all duration-500 group-hover:opacity-100">
+                {s.projects} PROJECTS
               </div>
             </div>
 
-            {/* RIGHT SIDE (description) */}
-            <div className="col-span-8 text-right text-white flex items-center">
-              <p className="max-w-3xl ml-auto text-xs sm:text-sm font-light leading-relaxed opacity-90 transform transition-all duration-500 group-hover:-translate-y-1 group-hover:opacity-100">
+            {/* BOTTOM/RIGHT SECTION (description) */}
+            <div className="sm:col-span-8 text-left sm:text-right text-white flex items-end sm:items-center mb-4 sm:mb-0">
+              <p className="max-w-3xl text-xs sm:text-sm font-light leading-relaxed opacity-80 sm:opacity-90 transform transition-all duration-500 group-hover:-translate-y-1 group-hover:opacity-100">
                 {s.description}
               </p>
             </div>
           </div>
-        </div>
-          </article>
+        </article>
         </Link>
     ))}
   </div>
