@@ -56,7 +56,7 @@ export default function VisualPage() {
         </div>
 
         {/* Hero Content */}
-        <div className="absolute bottom-0 left-0 z-10 w-full px-6 sm:px-12 pb-10 sm:pb-16">
+        <div className="absolute bottom-0 left-0 z-10 w-full px-4 sm:px-12 pb-10 sm:pb-16">
           <h1 className="max-w-5xl text-white text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
             VISUAL & GRAPHIC DESIGN
           </h1>
@@ -67,8 +67,7 @@ export default function VisualPage() {
       </section>
 
       {/* Portfolio Section with Filter */}
-      <section className="w-full py-20 px-6 sm:px-12">
-        <div className="max-w-7xl mx-auto">
+      <section className="w-full py-20 px-4 sm:px-12">
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
             {/* Left Sidebar - Filter (Sticky) */}
             <aside className="w-full lg:w-32 lg:flex-shrink-0">
@@ -200,7 +199,6 @@ export default function VisualPage() {
               )}
             </div>
           </div>
-        </div>
       </section>
     </main>
   );

@@ -1,167 +1,113 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
-import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useEffect } from 'react';
 
 export default function MediaPage() {
   const [projects, setProjects] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-        const res = await fetch(`${baseUrl}/data/media.json`, { cache: 'no-store' });
-        const data = await res.json();
+    fetch('/data/media.json', { cache: 'no-store' })
+      .then(res => res.json())
+      .then(data => {
         setProjects(data || []);
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProjects();
+        if (data?.length) setSelectedProjectId(data[0].id);
+      });
   }, []);
 
-  // Get unique project categories for filter
-  const projectCategories = useMemo(() => {
-    const categories = projects.map((p) => p.category).filter(Boolean);
-    return [...new Set(categories)];
-  }, [projects]);
-
-  // Filter projects based on selected category
-  const filteredProjects = useMemo(() => {
-    if (!selectedCategory) return projects;
-    return projects.filter((p) => p.category === selectedCategory);
-  }, [projects, selectedCategory]);
+  const selectedProject =
+    projects.find(p => p.id === selectedProjectId) || projects[0];
 
   return (
-    <main className="w-full">
-      {/* Hero Section - Similar to Architecture Page */}
-      <section className="relative w-full h-screen overflow-hidden">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/services/media.jpg"
-            alt="Media & Entertainment Showreel"
-            fill
-            className="object-cover"
-            priority
-          />
-          {/* Gradient overlay for cinematic depth */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-        </div>
-
-        {/* Hero Content */}
-        <div className="absolute bottom-0 left-0 z-10 w-full px-6 sm:px-12 pb-10 sm:pb-16">
-          <h1 className="max-w-5xl text-white text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
-            MEDIA & ENTERTAINMENT
-          </h1>
-          <p className="mt-4 text-white text-base sm:text-lg font-light max-w-3xl">
-            Creative direction, production and experiential media for compelling storytelling across platforms and formats.
-          </p>
-        </div>
-      </section>
-
-      {/* Portfolio Section with Filter */}
-      <section className="w-full py-20 px-6 sm:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row gap-2 lg:gap-12">
-            {/* Left Sidebar - Filter (Sticky) */}
-            <aside className="w-full lg:w-32 lg:flex-shrink-0">
-              <div className="sticky top-24">
-                <h3 className="text-sm font-extrabold text-gray-900 mb-6 uppercase tracking-widest">Filter</h3>
-                <div className="space-y-1">
-                  {/* All Button */}
-                  <button
-                    onClick={() => setSelectedCategory(null)}
-                    className={`block w-full text-left px-0 py-2 text-sm transition-all duration-300 ${
-                      selectedCategory === null
-                        ? 'text-black font-semibold'
-                        : 'text-gray-600 hover:text-black'
-                    }`}
-                  >
-                    All
-                  </button>
-
-                  {/* Category Filters */}
-                  {projectCategories.map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => setSelectedCategory(category)}
-                      className={`block w-full text-left px-0 py-2 text-sm transition-all duration-300 ${
-                        selectedCategory === category
-                          ? 'text-black font-semibold'
-                          : 'text-gray-600 hover:text-black'
-                      }`}
-                    >
-                      {category}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </aside>
-
-            {/* Right Side - Portfolio Grid */}
-            <div className="flex-1">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                {filteredProjects.map((p: any, idx: number) => {
-                  // All items have equal size - 3 columns, 1 row each
-                  const gridColSpan = 'sm:col-span-1';
-                  const aspectRatio = '16 / 9'; // Landscape ratio for all items
-
-                  return (
-                    <Link key={p.id} href={`/media/${p.slug}`}>
-                      <article className={`group cursor-pointer ${gridColSpan}`}>
-                        {/* Image Container */}
-                        <div
-                          className="relative w-full overflow-hidden bg-gray-200"
-                          style={{ aspectRatio }}
-                        >
-                          {p.image ? (
-                            <Image
-                              src={p.image}
-                              alt={p.title}
-                              fill
-                              className="object-cover transition-transform duration-700"
-                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            />
-                          ) : (
-                            <div className="w-full h-full bg-gray-300 flex items-center justify-center text-xs text-gray-500">
-                              No image
-                            </div>
-                          )}
-                        </div>
-
-                        {/* Text Below Image */}
-                        <div className="flex items-center justify-between gap-2 py-3">
-                          {/* Title */}
-                          <h2 className="text-sm font-semibold line-clamp-1">
-                            {p.title}
-                          </h2>
-
-                          {/* Category */}
-                          <p className="text-xs text-gray-600 flex-shrink-0">
-                            {p.category || 'Project'}
-                          </p>
-                        </div>
-                      </article>
-                    </Link>
-                  );
-                })}
-              </div>
-
-              {/* No Results Message */}
-              {filteredProjects.length === 0 && (
-                <div className="text-center py-20">
-                  <p className="text-gray-600 text-sm">No projects found for the selected category.</p>
-                </div>
+    <main className="h-screen bg-white px-10 pt-10 pb-6 overflow-hidden">
+      <section className="h-full flex flex-col justify-between">
+        {/* TOP CONTENT */}
+        <div className="grid grid-cols-[1.25fr_1fr] gap-12">
+          {/* LEFT */}
+          <div>
+            <div className="w-full h-[360px] bg-gray-300 relative mb-4">
+              {selectedProject?.image && (
+                <Image
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  fill
+                  className="object-cover"
+                />
               )}
             </div>
+
+            {/* BOTTOM META ROW (shared baseline) */}
+            <div className="flex items-center gap-16 text-[13px] font-bold">
+              <span>
+                Deliverables: {selectedProject?.scope || 'Project deliverables'}
+              </span>
+              <span>{selectedProject?.year || '2021'}</span>
+              <span>
+                {selectedProject?.type ||
+                  selectedProject?.category ||
+                  'Residential'}
+              </span>
+              <span>{selectedProject?.location || 'Ghana'}</span>
+            </div>
           </div>
+
+          {/* RIGHT */}
+          <div className="flex flex-col">
+            <div className="text-[14px] font-bold mb-4">
+              {selectedProject?.team?.[0] || 'Mr. John Smith'}
+            </div>
+
+            <div className="text-[13px] leading-[1.55] mb-10 max-w-[420px]">
+              {selectedProject?.description ||
+                'Project description goes here.'}
+            </div>
+
+            {/* TITLE — sits lower, visually weighted */}
+            <div className="font-bold text-[40px] leading-[1.05]">
+              Projects
+              <br />
+              Name Title.
+            </div>
+          </div>
+        </div>
+
+        {/* GALLERY ROW */}
+        <div className="grid grid-cols-8 gap-5 mt-10">
+          {projects.slice(0, 8).map((item, i) => (
+            <button
+              key={item.id}
+              onClick={() => setSelectedProjectId(item.id)}
+              className="flex flex-col focus:outline-none"
+            >
+              <div
+                className={`text-[13px] font-bold mb-2 ${
+                  selectedProjectId === item.id
+                    ? 'opacity-100'
+                    : 'opacity-60'
+                }`}
+              >
+                {String(i + 1).padStart(2, '0')}
+              </div>
+
+              <div
+                className={`w-full aspect-square bg-gray-300 relative ${
+                  selectedProjectId === item.id
+                    ? 'opacity-100'
+                    : 'opacity-60'
+                }`}
+              >
+                {item.image && (
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                  />
+                )}
+              </div>
+            </button>
+          ))}
         </div>
       </section>
     </main>

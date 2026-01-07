@@ -32,3 +32,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+{/* ---------solve the layout issue. due wedD..-------------------------------------------------------------------------------------------------- */}

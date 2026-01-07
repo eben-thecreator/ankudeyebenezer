@@ -34,85 +34,126 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services - inlined */}
-      {
-        /* service data inline so no extra files or slug routes */
-      }
-      <section className="w-full py-6 sm:py-12">
-  <div className="max-w-7xl mx-auto space-y-4 sm:space-y-8 px-4 sm:px-0">
-    {[
-      {
-        id: 'architecture',
-        href: '/architecture',
-        title: 'ARCHITECTURE & SPATIAL ENGINEERING',
-        projects: 24,
-        image: '/images/services/architecture.jpg',
-        description:
-          'Masterplanning, residential and commercial architectural design focused on craft and context-driven outcomes.',
-      },
-      {
-        id: 'visual',
-        href: '/visual',
-        title: 'BRAND & VISUAL DESIGN',
-        projects: 31,
-        image: '/images/services/digital.jpg',
-        description:
-          'End-to-end product design and brand systems that align strategy, experience and visual identity.',
-      },
-      {
-        id: 'media',
-        href: '/media',
-        title: 'MEDIA & ENTERTAINMENT',
-        projects: 27,
-        image: '/images/services/media.jpg',
-        description:
-          'Creative direction, production and experiential media for compelling storytelling across platforms.',
-      },
-    ].map((s) => (
-      <Link
-        key={s.id}
-        href={s.href}
-        className="group relative w-full overflow-hidden rounded-sm shadow-sm block"
-        style={{ height: '60vh' }}
-      >
-        <article className="w-full h-full">
-          {/* Background image */}
-          <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105">
-            <Image
-              src={s.image}
-              alt={s.title}
-              fill
-              className="object-cover"
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-black/50 transition duration-500 group-hover:bg-black/60" />
-          </div>
 
-          {/* Mobile: Stacked vertical layout | Desktop: Grid layout */}
-          <div className="relative z-10 h-full flex flex-col sm:grid sm:grid-cols-12 sm:items-center justify-between p-4 sm:p-0 sm:px-12">
 
-            {/* TOP/LEFT SECTION (title + count) */}
-            <div className="sm:col-span-4 text-left text-white flex flex-col justify-start sm:justify-center space-y-2 sm:space-y-1 pt-4 sm:pt-0">
-              <h3 className="text-lg sm:text-3xl font-extrabold leading-snug sm:leading-normal transform transition-all duration-500 group-hover:-translate-y-1">
-                {s.title}
-              </h3>
-              <div className="text-xs sm:text-sm tracking-widest opacity-70 sm:opacity-80 transition-all duration-500 group-hover:opacity-100">
-                {s.projects} PROJECTS
+
+
+{/* ----------------------------------------------------------------------------------------------------------- */}
+ 
+ 
+ 
+
+
+      {/* Services Section - Interactive */}
+      <section className="w-full min-h-[80vh] flex flex-col justify-between">
+        {/* ServiceSection logic inlined here */}
+        {/* --- ServiceSection START --- */}
+        {/* eslint-disable-next-line react-hooks/rules-of-hooks */}
+        {(() => {
+          const { useState } = require("react");
+          const [active, setActive] = useState(0);
+          const SERVICES = [
+            {
+              key: "architecture",
+              title: "Architecture & Spatial Engineering",
+              description:
+                "We deliver comprehensive architectural and spatial engineering solutions, integrating advanced 3D modeling, digital twins, and GIS mapping to create innovative environments. Our expertise spans residential, civic, and agricultural architecture, with a focus on context-driven design, precision surveying, and photogrammetry. From concept to completion, we ensure every project is crafted with technical excellence and creative vision, supporting clients with GNSS positioning, topographic analysis, and seamless project delivery.",
+              categories: [
+                ["Residential", "Public / Civic", "3D Modelling & Digital Twins", "Agricultural Architecture"],
+                ["GIS & Mapping", "Photogrammetry", "GNSS & Positioning", "Topographic Surveying"],
+              ],
+              image: "/images/works/arch1.jpg",
+              button: "Explore more works",
+            },
+            {
+              key: "visual",
+              title: "Visual Design",
+              description:
+                "We craft compelling visual identities and digital experiences, specializing in graphic design, branding, posters, and digital media. Our team brings ideas to life with creative storytelling and impactful visuals, ensuring your brand stands out across all platforms.",
+              categories: [
+                ["Graphic Design", "Branding Identity", "Posters", "Digital Media"],
+              ],
+              image: "/images/works/5.jpg",
+              button: "Explore visual works",
+            },
+            {
+              key: "media",
+              title: "Media & Entertainment",
+              description:
+                "From campaigns to animation, media production, and photography, we deliver engaging content for every audience. Our expertise covers the full spectrum of media creation, from concept to final cut, ensuring your message resonates and inspires.",
+              categories: [
+                ["Campaigns", "Animation", "Media Production", "Video & Photography"],
+              ],
+              image: "/images/works/media1.jpg",
+              button: "Explore media works",
+            },
+          ];
+          const Image = require("next/image").default;
+          return (
+            <div className="flex flex-col md:flex-row w-full mx-auto pt-4 px-4 sm:px-12 gap-8">
+              {/* Left Titles */}
+
+              <div className="md:w-auto flex flex-col relative gap-1 pb-0">
+                <div>
+                  {SERVICES.map((service, idx) => (
+                    <div
+                      key={service.key}
+                      className={`w-fit text-2xl sm:text-6xl md:text-4xl font-extrabold leading-tight mt-2 transition-colors duration-200 cursor-pointer px-2 py-1 ${
+                        active === idx ? "bg-black text-white" : "text-black hover:bg-black/80 hover:text-white"
+                      }`}
+                      onClick={() => setActive(idx)}
+                      tabIndex={0}
+                    >
+                      {service.title}
+                    </div>
+                  ))}
+                </div>
+                {/* Absolutely positioned service categories to align with image bottom */}
+                <div className="absolute left-0 w-full" style={{bottom: 0, height: '180px'}}>
+                  <div className="flex flex-col sm:flex-row gap-4 h-full items-end">
+                    {SERVICES[active].categories.map((col, i) => (
+                      <div key={i} className="flex-1 space-y-[-2px] text-xs sm:text-lg font-light pb-2">
+                        {col.map((cat) => (
+                          <div key={cat}>{cat}</div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {/* Invisible reference for 'works' alignment */}
+                <div className="hidden md:block mt-12" id="works-align-ref"></div>
+              </div>
+
+              {/* Right Content - visually align under 'works' */}
+              <div
+                className="flex-1 flex flex-col justify-between gap-4 mt-4 md:mt-0 relative min-h-[260px]"
+              >
+                {/* Top Paragraph */}
+                <div className="text-xs sm:text-lg font-light max-w-xl ">{SERVICES[active].description}</div>
+
+                {/* Service Categories moved to left content */}
+
+                {/* Explore Button & Image */}
+                <div className="mt-4 w-full flex flex-col gap-1">
+                  <button className="w-full bg-black text-white font-semibold py-3 text-sm md:text-base text-left px-4">
+                    Explore works
+                  </button>
+                  <div className="w-full h-[140px] md:h-[180px] bg-[#D1D1D1] relative overflow-hidden rounded-lg">
+                    <Image
+                      src="/images/works/arch1.jpg"
+                      alt="Service Preview"
+                      fill
+                      className="object-cover object-bottom"
+                      priority
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-
-            {/* BOTTOM/RIGHT SECTION (description) */}
-            <div className="sm:col-span-8 text-left sm:text-right text-white flex items-end sm:items-center mb-4 sm:mb-0">
-              <p className="max-w-3xl text-xs sm:text-sm font-light leading-relaxed opacity-80 sm:opacity-90 transform transition-all duration-500 group-hover:-translate-y-1 group-hover:opacity-100">
-                {s.description}
-              </p>
-            </div>
-          </div>
-        </article>
-        </Link>
-    ))}
-  </div>
-</section>
+          );
+        })()}
+        {/* --- ServiceSection END --- */}
+      </section>
  </main>
   );
 }
