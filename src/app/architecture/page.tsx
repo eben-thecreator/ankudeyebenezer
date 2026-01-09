@@ -111,100 +111,75 @@ export default function ArchitecturePage() {
               </div>
             </aside>
 
-            {/* Right Side - Masonry Portfolio Grid */}
             <div className="flex-1">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {filteredProjects.map((p: any, idx: number) => {
-                  let gridColSpan = 'sm:col-span-1';
-                  let aspectRatio = '1 / 1'; // Default square
-
-                  // Create a pattern: portrait, landscape, square, square, portrait, landscape, etc.
-                  const pattern = idx % 6;
-                  if (pattern === 0) {
-                    // Portrait
-                    gridColSpan = 'sm:col-span-1';
-                    aspectRatio = '3 / 4';
-                  } else if (pattern === 1) {
-                    // Landscape wide
-                    gridColSpan = 'sm:col-span-2';
-                    aspectRatio = '16 / 9';
-                  } else if (pattern === 2) {
-                    // Square
-                    gridColSpan = 'sm:col-span-1';
-                    aspectRatio = '1 / 1';
-                  } else if (pattern === 3) {
-                    // Square
-                    gridColSpan = 'sm:col-span-1';
-                    aspectRatio = '1 / 1';
-                  } else if (pattern === 4) {
-                    // Portrait tall
-                    gridColSpan = 'sm:col-span-1';
-                    aspectRatio = '2 / 3';
-                  } else {
-                    // Landscape
-                    gridColSpan = 'sm:col-span-2';
-                    aspectRatio = '16 / 9';
-                  }
-
-                  return (
-                    <Link key={p.id} href={`/architecture/${p.slug}`}>
-                      <article className={`group cursor-pointer ${gridColSpan}`}>
-                        {/* Image Container */}
-                        <div
-                          className="relative w-full overflow-hidden mb-4 bg-gray-200"
-                          style={{ aspectRatio }}
-                        >
-                          {p.image ? (
-                            <Image
-                              src={p.image}
-                              alt={p.title}
-                              fill
-                              className="object-cover transition-transform duration-700 group-hover:scale-105"
-                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            />
-                          ) : (
-                            <div className="w-full h-full bg-gray-300 flex items-center justify-center text-xs text-gray-500">
-                              No image
-                            </div>
-                          )}
-                        </div>
-
-                        {/* Text Content Below Image */}
-                        <div className="space-y-2">
-                          {/* Title */}
-                          <h2 className="text-sm font-bold text-gray-900 group-hover:text-black transition-colors line-clamp-2">
-                            {p.title}
-                          </h2>
-
-                          {/* Description - Show for landscape items */}
-                          {(pattern === 1 || pattern === 5) && p.description && (
-                            <p className="text-xs text-gray-600 line-clamp-2">{p.description}</p>
-                          )}
-
-                          {/* Category and Year Row */}
-                          <div className="flex items-center justify-between text-xs">
-                            {/* Category on Left */}
-                            <p className="text-gray-600">
-                              {p.category || 'Project'}
-                            </p>
-
-                            {/* Year on Right */}
-                            <p className="text-gray-600">{p.year || 'N/A'}</p>
-                          </div>
-                        </div>
-                      </article>
-                    </Link>
-                  );
-                })}
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-8">
+    {filteredProjects.map((p: any) => (
+      <Link key={p.id} href={`/architecture/${p.slug}`}>
+        <article className="group cursor-pointer">
+          {/* Image */}
+          <div
+            className="relative w-full overflow-hidden mb-4 bg-gray-200"
+            style={{ aspectRatio: '16 / 9' }}
+          >
+            {p.image ? (
+              <Image
+                src={p.image}
+                alt={p.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+            ) : (
+              <div className="w-full h-full bg-gray-300 flex items-center justify-center text-xs text-gray-500">
+                No image
               </div>
+            )}
+          </div>
 
-              {/* No Results Message */}
-              {filteredProjects.length === 0 && (
-                <div className="text-center py-20">
-                  <p className="text-gray-600 text-sm">No projects found for the selected category.</p>
-                </div>
-              )}
+          {/* Text */}
+          <div className="space-y-1">
+            <h2 className="text-sm font-bold text-gray-900 line-clamp-2">
+              {p.title}
+            </h2>
+
+            {p.description && (
+              <p className="text-xs text-gray-600 line-clamp-2">
+                {p.description}
+              </p>
+            )}
+
+            {/* Category + Year / Hover Action */}
+            <div className="flex items-center justify-between text-xs text-gray-600">
+              <span>{p.category || 'Project'}</span>
+
+              <span className="relative">
+                {/* Year */}
+                <span className="block transition-opacity duration-200 group-hover:opacity-0">
+                  {p.year || 'N/A'}
+                </span>
+
+                {/* Hover Text */}
+                <span className="absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                  View
+                </span>
+              </span>
             </div>
+          </div>
+        </article>
+      </Link>
+    ))}
+  </div>
+
+  {/* Empty State */}
+  {filteredProjects.length === 0 && (
+    <div className="text-center py-20">
+      <p className="text-gray-600 text-sm">
+        No projects found for the selected category.
+      </p>
+    </div>
+  )}
+</div>
+
           </div>
       </section>
     </main>

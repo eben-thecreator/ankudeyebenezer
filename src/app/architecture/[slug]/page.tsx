@@ -86,8 +86,8 @@ export default function ProjectDetailsPage() {
       </section>
 
       {/* Project Details Section */}
-      <section className="w-full py-20 px-6 sm:px-12">
-        <div className="max-w-7xl mx-auto">
+      <section className="w-full py-16 sm:py-20 px-4 sm:px-12">
+        <div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Left Side - Images and Videos */}
             <div className="space-y-8">
@@ -209,76 +209,41 @@ export default function ProjectDetailsPage() {
       </section>
 
       {/* Navigation Section */}
-      <section className="w-full py-20 px-6 sm:px-12 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 gap-8">
-            {/* Previous Project */}
-            {prevProject ? (
-              <Link href={`/architecture/${prevProject.slug}`} className="group">
-                <article className="space-y-4">
-                  <div className="relative w-full aspect-video overflow-hidden bg-gray-200">
-                    {prevProject.image && (
-                      <Image
-                        src={prevProject.image}
-                        alt={prevProject.title}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        sizes="50vw"
-                      />
-                    )}
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600 mb-2">← Previous Project</p>
-                    <h3 className="text-lg font-extrabold text-gray-900 group-hover:text-black transition-colors">
-                      {prevProject.title}
-                    </h3>
-                  </div>
-                </article>
-              </Link>
-            ) : (
-              <div className="opacity-50">
-                <div className="relative w-full aspect-video overflow-hidden  bg-gray-200" />
-                <p className="text-sm text-gray-600 mt-4">No previous project</p>
-              </div>
-            )}
+      <section className="w-full py-20 px-4 sm:px-12 border-t border-gray-200">
+        <div className="flex flex-col md:flex-row justify-between gap-6">
+          {/* Previous Project Button */}
+          {prevProject ? (
+            <Link
+              href={`/architecture/${prevProject.slug}`}
+              className="ml-0 px-4 py-2 text-sm font-bold bg-black text-white transition-all duration-300 ease-out hover:bg-transparent hover:text-black w-full md:w-auto text-center"
+            >
+              ← Previous Project
+            </Link>
+          ) : (
+            <span className="opacity-50 px-4 py-2 text-sm font-bold border border-gray-300 w-full md:w-auto text-center cursor-not-allowed">No previous project</span>
+          )}
 
-            {/* Next Project */}
-            {nextProject ? (
-              <Link href={`/architecture/${nextProject.slug}`} className="group text-right">
-                <article className="space-y-4">
-                  <div className="relative w-full aspect-video overflow-hidden  bg-gray-200">
-                    {nextProject.image && (
-                      <Image
-                        src={nextProject.image}
-                        alt={nextProject.title}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        sizes="50vw"
-                      />
-                    )}
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600 mb-2">Next Project →</p>
-                    <h3 className="text-lg font-extrabold text-gray-900 group-hover:text-black transition-colors">
-                      {nextProject.title}
-                    </h3>
-                  </div>
-                </article>
-              </Link>
-            ) : (
-              <div className="opacity-50 text-right">
-                <div className="relative w-full aspect-video overflow-hidden bg-gray-200" />
-                <p className="text-sm text-gray-600 mt-4">No next project</p>
-              </div>
-            )}
-          </div>
+          {/* Next Project Button */}
+          {nextProject ? (
+            <Link
+              href={`/architecture/${nextProject.slug}`}
+              className="ml-0 px-4 py-2 text-sm font-bold bg-black text-white transition-all duration-300 ease-out hover:bg-transparent hover:text-black w-full md:w-auto text-center"
+            >
+              Next Project →
+            </Link>
+          ) : (
+            <span className="opacity-50 px-4 py-2 text-sm font-bold border border-gray-300 w-full md:w-auto text-center cursor-not-allowed">No next project</span>
+          )}
         </div>
       </section>
 
       {/* Back to Projects Link */}
-      <section className="w-full py-16 px-6 sm:px-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <Link href="/architecture" className="inline-flex items-center gap-2 text-black font-semibold hover:underline">
+      <section className="w-full py-16 px-4 sm:px-12 bg-gray-50">
+        <div>
+          <Link
+            href="/architecture"
+            className="ml-0 px-4 py-2 text-sm font-bold bg-black text-white transition-all duration-300 ease-out hover:bg-transparent hover:text-black w-full md:w-auto text-center inline-flex items-center gap-2"
+          >
             ← Back to Architecture
           </Link>
         </div>

@@ -43,117 +43,125 @@ export default function Home() {
  
  
 
+{/* Services Section */}
+<section className="w-full py-16 sm:py-20 px-4 sm:px-12">
+  <h2 className="text-xs sm:text-lg font-bold mb-12">Services</h2>
 
-      {/* Services Section - Interactive */}
-      <section className="w-full min-h-[80vh] flex flex-col justify-between">
-        {/* ServiceSection logic inlined here */}
-        {/* --- ServiceSection START --- */}
-        {/* eslint-disable-next-line react-hooks/rules-of-hooks */}
-        {(() => {
-          const { useState } = require("react");
-          const [active, setActive] = useState(0);
-          const SERVICES = [
-            {
-              key: "architecture",
-              title: "Architecture & Spatial Engineering",
-              description:
-                "We deliver comprehensive architectural and spatial engineering solutions, integrating advanced 3D modeling, digital twins, and GIS mapping to create innovative environments. Our expertise spans residential, civic, and agricultural architecture, with a focus on context-driven design, precision surveying, and photogrammetry. From concept to completion, we ensure every project is crafted with technical excellence and creative vision, supporting clients with GNSS positioning, topographic analysis, and seamless project delivery.",
-              categories: [
-                ["Residential", "Public / Civic", "3D Modelling & Digital Twins", "Agricultural Architecture"],
-                ["GIS & Mapping", "Photogrammetry", "GNSS & Positioning", "Topographic Surveying"],
-              ],
-              image: "/images/works/arch1.jpg",
-              button: "Explore more works",
-            },
-            {
-              key: "visual",
-              title: "Visual Design",
-              description:
-                "We craft compelling visual identities and digital experiences, specializing in graphic design, branding, posters, and digital media. Our team brings ideas to life with creative storytelling and impactful visuals, ensuring your brand stands out across all platforms.",
-              categories: [
-                ["Graphic Design", "Branding Identity", "Posters", "Digital Media"],
-              ],
-              image: "/images/works/5.jpg",
-              button: "Explore visual works",
-            },
-            {
-              key: "media",
-              title: "Media & Entertainment",
-              description:
-                "From campaigns to animation, media production, and photography, we deliver engaging content for every audience. Our expertise covers the full spectrum of media creation, from concept to final cut, ensuring your message resonates and inspires.",
-              categories: [
-                ["Campaigns", "Animation", "Media Production", "Video & Photography"],
-              ],
-              image: "/images/works/media1.jpg",
-              button: "Explore media works",
-            },
-          ];
-          const Image = require("next/image").default;
-          return (
-            <div className="flex flex-col md:flex-row w-full mx-auto pt-4 px-4 sm:px-12 gap-8">
-              {/* Left Titles */}
+  {/* OUTER GRID — columns only */}
+  <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr] gap-x-4">
 
-              <div className="md:w-auto flex flex-col relative gap-1 pb-0">
-                <div>
-                  {SERVICES.map((service, idx) => (
-                    <div
-                      key={service.key}
-                      className={`w-fit text-2xl sm:text-6xl md:text-4xl font-extrabold leading-tight mt-2 transition-colors duration-200 cursor-pointer px-2 py-1 ${
-                        active === idx ? "bg-black text-white" : "text-black hover:bg-black/80 hover:text-white"
-                      }`}
-                      onClick={() => setActive(idx)}
-                      tabIndex={0}
-                    >
-                      {service.title}
-                    </div>
-                  ))}
-                </div>
-                {/* Absolutely positioned service categories to align with image bottom */}
-                <div className="absolute left-0 w-full" style={{bottom: 0, height: '180px'}}>
-                  <div className="flex flex-col sm:flex-row gap-4 h-full items-end">
-                    {SERVICES[active].categories.map((col, i) => (
-                      <div key={i} className="flex-1 space-y-[-2px] text-xs sm:text-lg font-light pb-2">
-                        {col.map((cat) => (
-                          <div key={cat}>{cat}</div>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                {/* Invisible reference for 'works' alignment */}
-                <div className="hidden md:block mt-12" id="works-align-ref"></div>
-              </div>
+    {/* LEFT COLUMN */}
+    <a
+      href="/architecture"
+      className="flex flex-col group cursor-pointer"
+    >
+      <h3 className="text-xs sm:text-lg font-bold mb-4">
+        Architecture & Spatial Engineering
+      </h3>
 
-              {/* Right Content - visually align under 'works' */}
-              <div
-                className="flex-1 flex flex-col justify-between gap-4 mt-4 md:mt-0 relative min-h-[260px]"
-              >
-                {/* Top Paragraph */}
-                <div className="text-xs sm:text-lg font-light max-w-xl ">{SERVICES[active].description}</div>
+      <div className="relative w-full h-[360px] md:h-[620px] bg-[#D1D1D1]">
+        <Image
+          src="/images/services/architecture.jpg"
+          alt="Architecture & Spatial Engineering"
+          fill
+          priority
+          className="
+            object-cover
+            transition-[filter] duration-300 ease-out
+            group-hover:brightness-95
+          "
+        />
+      </div>
 
-                {/* Service Categories moved to left content */}
+      <div className="mt-6 flex justify-between text-xs sm:text-sm">
+        <div className="flex flex-col gap-1">
+          <span className="font-bold">Residential</span>
+          <span className="font-bold">Public / Civic</span>
+          <span className="font-bold">3D Modelling & Digital Twins</span>
+          <span className="font-bold">Architecture Visualization</span>
+        </div>
 
-                {/* Explore Button & Image */}
-                <div className="mt-4 w-full flex flex-col gap-1">
-                  <button className="w-full bg-black text-white font-semibold py-3 text-sm md:text-base text-left px-4">
-                    Explore works
-                  </button>
-                  <div className="w-full h-[140px] md:h-[180px] bg-[#D1D1D1] relative overflow-hidden rounded-lg">
-                    <Image
-                      src="/images/works/arch1.jpg"
-                      alt="Service Preview"
-                      fill
-                      className="object-cover object-bottom"
-                      priority
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        })()}
-        {/* --- ServiceSection END --- */}
-      </section>
+        <div className="flex flex-col gap-1 text-right">
+          <span className="font-bold">Topographic Surveying</span>
+          <span className="font-bold">GIS & Mapping</span>
+          <span className="font-bold">Photogrammetry</span>
+          <span className="font-bold">GNSS & Positioning</span>
+        </div>
+      </div>
+    </a>
+
+    {/* RIGHT COLUMN */}
+    <div className="flex flex-col gap-24">
+
+      {/* Visual Design */}
+      <a
+        href="/visual"
+        className="flex flex-col group cursor-pointer"
+      >
+        <h3 className="text-xs sm:text-lg font-bold mb-4 ">
+          Visual Design
+        </h3>
+
+        <div className="relative w-full h-[300px] bg-[#D1D1D1]">
+          <Image
+            src="/images/services/visual.jpg"
+            alt="Visual Design"
+            fill
+            priority
+            className="
+              object-cover
+              transition-[filter] duration-300 ease-out
+              group-hover:brightness-95
+            "
+          />
+        </div>
+
+        <div className="mt-4 flex flex-col gap-1 text-xs sm:text-sm">
+          <span className="font-bold">Graphic Design</span>
+          <span className="font-bold">Branding Identity</span>
+          <span className="font-bold">Posters</span>
+          <span className="font-bold">Digital Media</span>
+        </div>
+      </a>
+
+      {/* Media & Entertainment */}
+      <a
+        href="/media"
+        className="flex flex-col group cursor-pointer"
+      >
+        <h3 className="text-xs sm:text-lg font-bold mb-4">
+          Media & Entertainment
+        </h3>
+
+        <div className="relative w-full h-[300px] bg-[#D1D1D1]">
+          <Image
+            src="/images/services/media.jpg"
+            alt="Media & Entertainment"
+            fill
+            priority
+            className="
+              object-cover
+              transition-[filter] duration-300 ease-out
+              group-hover:brightness-95
+            "
+          />
+        </div>
+
+        <div className="mt-4 flex flex-col gap-1 text-xs sm:text-sm">
+          <span className="font-bold">Campaigns</span>
+          <span className="font-bold">Animation</span>
+          <span className="font-bold">Media Production</span>
+          <span className="font-bold">Video & Photography</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+
+
  </main>
   );
 }
