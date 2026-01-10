@@ -1,13 +1,18 @@
 // app/layout.tsx
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Archivo } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/ui/header";
 import { Footer } from "@/components/ui/footer";
 import ClientBody from "./ClientBody";
 
 
-const inter = Inter({ subsets: ["latin"] });
+const archivo = Archivo({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: 'swap',
+  variable: '--font-archivo',
+});
 
 export const metadata: Metadata = {
   title: "Ankudey.",
@@ -22,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={archivo.className}>
         <ClientBody>
           <Header />
           <main className="min-h-screen">{children}</main>
@@ -33,4 +38,4 @@ export default function RootLayout({
   );
 }
 
-{/* ---------solve the layout issue. due wedD..-------------------------------------------------------------------------------------------------- */}
+{/* ---------solve the layout issue. due wedD..-------------------------------------------------------------------------------------------------- */ }

@@ -14,7 +14,7 @@ export default function VisualPage() {
     const fetchProjects = async () => {
       try {
         const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-        const res = await fetch(`${baseUrl}/data/visual.json`, { cache: 'no-store' });
+        const res = await fetch(`/data/visual.json`, { cache: 'no-store' });
         const data = await res.json();
         setProjects(data || []);
       } catch (error) {

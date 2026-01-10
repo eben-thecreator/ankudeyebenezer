@@ -64,7 +64,7 @@ export default function ArchitecturePage() {
 
         {/* Hero Content */}
         <div className="absolute bottom-0 left-0 z-10 w-full px-4 sm:px-12 pb-8 sm:pb-16">
-          <h1 className="max-w-5xl text-white text-2xl sm:text-6xl md:text-4xl font-extrabold leading-tight uppercase">
+          <h1 className="max-w-5xl text-white text-2xl sm:text-6xl md:text-4xl font-extrabold leading-tight">
             Architecture <br />
             & Spatial Engineering
 

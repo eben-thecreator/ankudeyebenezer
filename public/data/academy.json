@@ -1,0 +1,46 @@
+[
+    {
+        "id": "acad-001",
+        "slug": "spatial-design-workshop",
+        "title": "Spatial Design Workshop",
+        "description": "An intense 4-week workshop focused on the fundamentals of spatial thinking and architectural composition.",
+        "image": "/images/academy/spatial.jpg",
+        "status": "ongoing",
+        "date": "Jan 2026",
+        "category": "Workshop",
+        "location": "Accra, Ghana"
+    },
+    {
+        "id": "acad-002",
+        "slug": "visual-storytelling",
+        "title": "Visual Storytelling",
+        "description": "Mastering the art of narrative through graphic design and motion graphics.",
+        "image": "/images/academy/storytelling.jpg",
+        "status": "upcoming",
+        "date": "March 2026",
+        "category": "Masterclass",
+        "location": "Online"
+    },
+    {
+        "id": "acad-003",
+        "slug": "arch-viz-basics",
+        "title": "Arch Viz Basics",
+        "description": "Introduction to photorealistic rendering for architects and designers.",
+        "image": "/images/academy/rendering.jpg",
+        "status": "previous",
+        "date": "Nov 2025",
+        "category": "Bootcamp",
+        "location": "Hybrid"
+    },
+    {
+        "id": "acad-004",
+        "slug": "design-thinking",
+        "title": "Design Thinking 101",
+        "description": "A creative problem-solving approach to design challenges.",
+        "image": "/images/academy/design-thinking.jpg",
+        "status": "previous",
+        "date": "Aug 2025",
+        "category": "Seminar",
+        "location": "Accra, Ghana"
+    }
+]
