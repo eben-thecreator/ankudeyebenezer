@@ -15,8 +15,7 @@ export default function MediaProjectPage() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-        const res = await fetch(`${baseUrl}/data/media.json`, { cache: 'no-store' });
+        const res = await fetch('/data/media.json', { cache: 'no-store' });
         const data = await res.json();
         setAllProjects(data || []);
 
