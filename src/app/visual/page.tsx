@@ -46,7 +46,7 @@ export default function VisualPage() {
         <div className="absolute inset-0">
           <Image
             src="/images/services/visual.jpg"
-            alt="Visual Design & Graphic Design"
+            alt="Visual Design"
             fill
             className="object-cover"
             priority
@@ -56,8 +56,8 @@ export default function VisualPage() {
         </div>
 
         {/* Hero Content */}
-        <div className="absolute bottom-0 left-0 z-10 w-full px-4 sm:px-12 pb-10 sm:pb-16">
-          <h1 className="max-w-5xl text-white text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+        <div className="absolute bottom-0 left-0 z-10 w-full px-4 sm:px-12 pb-8 sm:pb-16">
+          <h1 className="max-w-5xl text-white text-2xl sm:text-6xl md:text-4xl font-extrabold leading-tight">
             VISUAL & GRAPHIC DESIGN
           </h1>
           <p className="mt-4 text-white text-base sm:text-lg font-light max-w-3xl">

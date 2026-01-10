@@ -76,7 +76,7 @@ export default function ProjectDetailsPage() {
 
         {/* Hero Content */}
         <div className="absolute bottom-0 left-0 z-10 w-full px-6 sm:px-12 pb-10 sm:pb-16">
-          <h1 className="max-w-5xl text-white text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+          <h1 className="max-w-5xl text-white text-2xl sm:text-6xl md:text-4xl font-extrabold leading-tight">
             {project.title}
           </h1>
           <p className="mt-4 text-white text-base sm:text-lg font-light max-w-3xl line-clamp-1">
