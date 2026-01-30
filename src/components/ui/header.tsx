@@ -32,61 +32,62 @@ export default function Header() {
         role="banner"
       >
         <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link
-              href="/"
-              className="text-[1.25rem] font-extrabold tracking-tight text-[color:var(--color-dark)]"
-            >
-              ANKUDEY.
-              <sup className="text-[0.6rem] align-super">TM</sup>
-            </Link>
+          {/* Logo */}
+          <Link
+            href="/"
+            className="text-[1.25rem] font-extrabold tracking-tight text-[color:var(--color-dark)]"
+          >
+            ANKUDEY.
+            <sup className="text-[0.6rem] align-super">TM</sup>
+          </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8" role="navigation">
-              {routes.map(({ href, label, cta }) =>
-                cta ? (
-                  <Link
-                    key={label}
-                    href={href}
-                    className="
-                      ml-2
-                      px-4 py-2
-                      text-sm font-bold
-                      bg-black text-white
-                      transition-all duration-300 ease-out
-                      hover:bg-transparent hover:text-black
-                    "
-                  >
-                    {label}
-                  </Link>
-                ) : (
-                  <Link
-                    key={label}
-                    href={href}
-                    className="text-sm font-bold text-[color:var(--color-dark)] hover:text-neutral-600 transition-colors"
-                  >
-                    {label}
-                  </Link>
-                )
-              )}
-            </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8" role="navigation">
+            {routes.map(({ href, label, cta }) =>
+              cta ? (
+                <Link
+                  key={label}
+                  href={href}
+                  className="
+                        ml-2
+                        px-6 py-2
+                        text-xs font-bold
+                        bg-black text-white
+                        transition-all duration-300 ease-out
+                        hover:bg-transparent hover:text-black
+                        border border-black
+                      "
+                >
+                  {label}
+                </Link>
+              ) : (
+                <Link
+                  key={label}
+                  href={href}
+                  className="text-xs font-bold text-[color:var(--color-dark)]"
+                >
+                  {label}
+                </Link>
+              )
+            )}
+          </nav>
 
-            {/* Mobile Menu Button */}
-            <button
-              type="button"
-              onClick={() => setOpen(true)}
-              className="md:hidden text-[color:var(--color-dark)]"
-              aria-label="Open navigation"
-              aria-expanded={open}
-              aria-controls="mobile-navigation"
-            >
-              <div className="space-y-1.5">
-                <span className="block w-6 h-[2px] bg-current" />
-                <span className="block w-6 h-[2px] bg-current" />
-                <span className="block w-6 h-[2px] bg-current" />
-              </div>
-            </button>
-          </div>
+          {/* Mobile Menu Button */}
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="md:hidden text-[color:var(--color-dark)]"
+            aria-label="Open navigation"
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+          >
+            <div className="space-y-1.5">
+              <span className="block w-6 h-[2px] bg-current" />
+              <span className="block w-6 h-[2px] bg-current" />
+              <span className="block w-6 h-[2px] bg-current" />
+            </div>
+          </button>
+        </div>
       </header>
 
       {/* Mobile Navigation Drawer */}

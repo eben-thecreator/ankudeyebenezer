@@ -10,15 +10,15 @@ export default function ClientBody({
   // Remove any extension-added classes during hydration
   useEffect(() => {
     // This runs only on the client after hydration
-    document.body.className = "antialiased";
+    document.body.className = "antialiased selection:bg-black selection:text-white";
   }, []);
 
   // Add error boundary for chunk loading errors
   useEffect(() => {
     const handleError = (event: ErrorEvent) => {
-      if (event.error && typeof event.error.message === 'string' && 
-          (event.error.message.includes('ChunkLoadError') || 
-           event.error.message.includes('Loading chunk'))) {
+      if (event.error && typeof event.error.message === 'string' &&
+        (event.error.message.includes('ChunkLoadError') ||
+          event.error.message.includes('Loading chunk'))) {
         // Reload the page to recover from chunk loading errors
         window.location.reload();
       }
@@ -28,5 +28,9 @@ export default function ClientBody({
     return () => window.removeEventListener('error', handleError);
   }, []);
 
-  return <div className="antialiased">{children}</div>;
+  return (
+    <div className="antialiased">
+      {children}
+    </div>
+  );
 }
