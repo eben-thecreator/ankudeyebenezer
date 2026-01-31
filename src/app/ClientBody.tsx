@@ -7,12 +7,6 @@ export default function ClientBody({
 }: {
   children: React.ReactNode;
 }) {
-  // Remove any extension-added classes during hydration
-  useEffect(() => {
-    // This runs only on the client after hydration
-    document.body.className = "antialiased selection:bg-black selection:text-white";
-  }, []);
-
   // Add error boundary for chunk loading errors
   useEffect(() => {
     const handleError = (event: ErrorEvent) => {
