@@ -29,7 +29,7 @@ export default function Home() {
 
         <div className="absolute bottom-0 left-0 z-10 w-full px-4 sm:px-12 pb-8 sm:pb-16">
           <motion.h1
-            className="max-w-5xl text-white text-2xl sm:text-6xl md:text-5xl font-extrabold leading-tight tracking-tight"
+            className="max-w-5xl text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-tight tracking-tight"
           >
             {[
               "WORKING ACROSS",
@@ -96,7 +96,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-4">
+        <div className="flex flex-col">
           
           {[
             {
@@ -130,32 +130,42 @@ export default function Home() {
             >
               <Link
                 href={service.href}
-                className="flex flex-col gap-4 group cursor-pointer h-full"
+                className="border-t-2 border-black py-12 flex flex-col md:flex-row gap-8 group"
               >
-                <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden">
-                   <div className="absolute top-4 left-4 z-20 text-white drop-shadow-md">
-                      <service.icon className="w-5 h-5" />
-                   </div>
-                   <Image
-                     src={service.image}
-                     alt={service.title}
-                     fill
-                     className="object-cover transition-transform duration-700 ease-in-out"
-                   />
-                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+                {/* Left Column: Title with Index */}
+                <div className="w-full md:w-1/2">
+                  <div className="flex items-start gap-4">
+                    <span className="text-xl md:text-2xl font-bold text-gray-400">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tighter group-hover:text-gray-600 transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                  </div>
                 </div>
-                
-                <div className="flex flex-col gap-3">
-                   <div className="flex justify-between items-start ">
-                      <h3 className="text-lg sm:text-xl font-bold group-hover:text-gray-600 transition-colors duration-300">
-                        {service.title}
-                      </h3>
-                      <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-300 text-gray-400 group-hover:text-black" />
-                   </div>
-                   
-                   <p className="text-sm text-gray-600 leading-relaxed">
-                     {service.description}
-                   </p>
+
+                {/* Right Column: Description, Image, and Arrow */}
+                <div className="w-full md:w-1/2 flex flex-col gap-4">
+                  <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+                    {service.description}
+                  </p>
+                  
+                  {/* Image */}
+                  <div className="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
+                  </div>
+                  
+                  {/* Arrow Icon */}
+                  <div className="flex justify-end">
+                    <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
+                  </div>
                 </div>
               </Link>
             </motion.div>
