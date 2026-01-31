@@ -55,44 +55,46 @@ export default function Home() {
         </div>
 
         <div className="absolute bottom-0 left-0 z-10 w-full px-4 sm:px-12 pb-12 sm:pb-20">
-          <motion.h1
-            className="max-w-5xl text-white text-5xl md:text-6xl font-bold leading-tight tracking-tight"
-            style={{ mixBlendMode: 'difference' }}
-          >
-            {[
-              "WORKING ACROSS",
-              "ENGINEERING, DESIGN AND",
-              "TECHNOLOGY."
-            ].map((line, lineIndex) => (
-              <div key={lineIndex} className="block overflow-hidden">
-                {line.split(" ").map((word, wordIndex) => (
-                  <span key={wordIndex} className="inline-block overflow-hidden mr-3">
-                    <motion.span
-                      initial={{ y: "100%" }}
-                      animate={{ y: 0 }}
-                      transition={{
-                        duration: 0.8,
-                        ease: [0.22, 1, 0.36, 1],
-                        delay: 0.2 + (lineIndex * 0.1) + (wordIndex * 0.05)
-                      }}
-                      className="inline-block"
-                    >
-                      {word}
-                    </motion.span>
-                  </span>
-                ))}
-              </div>
-            ))}
-          </motion.h1>
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
-            className="mt-4 sm:mt-6 text-white text-sm sm:text-base font-normal"
-            style={{ mixBlendMode: 'difference' }}
-          >
-            Everything else grows from there
-          </motion.p>
+          <div className="max-w-5xl bg-black/10 backdrop-blur-sm p-4 sm:p-6 rounded-lg">
+            <motion.h1
+              className="text-white text-5xl md:text-6xl font-bold leading-tight tracking-tight"
+              style={{ mixBlendMode: 'difference' }}
+            >
+              {[
+                "WORKING ACROSS",
+                "ENGINEERING, DESIGN AND",
+                "TECHNOLOGY."
+              ].map((line, lineIndex) => (
+                <div key={lineIndex} className="block overflow-hidden">
+                  {line.split(" ").map((word, wordIndex) => (
+                    <span key={wordIndex} className="inline-block overflow-hidden mr-3">
+                      <motion.span
+                        initial={{ y: "100%" }}
+                        animate={{ y: 0 }}
+                        transition={{
+                          duration: 0.8,
+                          ease: [0.22, 1, 0.36, 1],
+                          delay: 0.2 + (lineIndex * 0.1) + (wordIndex * 0.05)
+                        }}
+                        className="inline-block"
+                      >
+                        {word}
+                      </motion.span>
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </motion.h1>
+            <motion.p
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
+              className="mt-4 sm:mt-6 text-white text-sm sm:text-base font-normal"
+              style={{ mixBlendMode: 'difference' }}
+            >
+              Everything else grows from there
+            </motion.p>
+          </div>
         </div>
       </section>
 
@@ -165,6 +167,7 @@ export default function Home() {
               >
                 <Link
                   href={service.href}
+                  onFocus={() => setActiveService(index)}
                   className="flex items-center justify-between py-6 sm:py-8 transition-all duration-300"
                 >
                   <div className="flex items-center gap-4 sm:gap-6">
@@ -176,7 +179,7 @@ export default function Home() {
                       {service.shortTitle}
                     </h4>
                   </div>
-                  <ArrowRight className="w-6 h-6 sm:w-8 sm:h-8 text-white/40 group-hover:text-white -rotate-45 group-hover:rotate-0 transition-all duration-300" />
+                  <ArrowRight aria-hidden="true" className="w-6 h-6 sm:w-8 sm:h-8 text-white/40 group-hover:text-white -rotate-45 group-hover:rotate-0 transition-all duration-300" />
                 </Link>
               </motion.div>
             ))}
